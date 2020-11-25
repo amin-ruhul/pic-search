@@ -5,13 +5,11 @@ import ImageCard from './ImageCard';
 class ImageList extends React.Component{
 
     render(){
-        return(
-            <div>
-                <div className='image-list'>
-                   <ImageCard/> 
-                </div>
-            </div>
-        )
+        const images =this.props.images.map(image =>{
+            return <ImageCard key={image.id} image = {image}/>
+        })
+
+        return <div className='image-list'>{images}</div>
     }
 }
 
