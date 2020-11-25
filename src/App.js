@@ -1,5 +1,6 @@
 import React from 'react';
 import Search from './components/Search';
+import ImageList from './components/ImageList';
 
 class App extends React.Component {
 
@@ -10,6 +11,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Search onSubmit = {this.onSubmit}/>
+        <ImageList/>
       </div>
     );
   }
