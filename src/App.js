@@ -5,7 +5,7 @@ import ImageList from './components/ImageList';
 
 class App extends React.Component {
 
-  state = { images:[] }
+  state = { images:[], loading: false}
 
   onSubmit = async (term) =>{
    const response = await axios.get('https://api.unsplash.com/search/photos?page=5&per_page=30',{
@@ -14,13 +14,15 @@ class App extends React.Component {
         Authorization: 'Client-ID WVRzZnSC0YPccWLxxgD3zO2l22AfpXSOw3-haanPKMs'
       }
     });
-
+    this.setState({ loading: true});
     this.setState({images: response.data.results});
+    this.setState({ loading: false});
   }
   render(){
+
     return (
       <div className="App">
-        <Search onSubmit = {this.onSubmit}/>
+        <Search onSubmit = {this.onSubmit}/> 
         <ImageList images = {this.state.images}/>
   
       </div>
